@@ -44,7 +44,13 @@ export const AuthProvider = ({ children }) => {
       setUser(response.user);
       return { success: true };
     } catch (error) {
-      return { success: false, error: error.message };
+      if (error?.status === 401) {
+        return { success: false, error: 'E-mail ou senha inválidos.' };
+      }
+      if (error?.code === 'NETWORK') {
+        return { success: false, error: 'Não foi possível conectar ao servidor. Tente novamente mais tarde.' };
+      }
+      return { success: false, error: error?.message || 'Ocorreu um erro ao fazer login.' };
     }
   };
 
@@ -56,7 +62,10 @@ export const AuthProvider = ({ children }) => {
       setUser(response.user);
       return { success: true };
     } catch (error) {
-      return { success: false, error: error.message };
+      if (error?.code === 'NETWORK') {
+        return { success: false, error: 'Não foi possível conectar ao servidor. Tente novamente mais tarde.' };
+      }
+      return { success: false, error: error?.message || 'Ocorreu um erro ao registrar.' };
     }
   };
 
@@ -80,3 +89,4 @@ export const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
+export default AuthContext;

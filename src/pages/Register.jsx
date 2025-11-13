@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
 import { useAuth } from "@/context/AuthContext";
 
 export function Register() {
@@ -11,6 +10,7 @@ export function Register() {
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
   const [department, setDepartment] = useState("");
+  const [analystToken, setAnalystToken] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -37,15 +37,22 @@ export function Register() {
       return;
     }
 
+    if (!department) {
+      setError("Selecione um departamento.");
+      return;
+    }
+
     setLoading(true);
 
     try {
+      const role = (analystToken || "").trim().toUpperCase() === "SUPORTE4280" ? "analyst" : "user";
       const result = await register({
         name: fullName,
         email,
         password,
         department,
-        role: 'user'
+        role,
+        origin: "web",
       });
 
       if (result.success) {
@@ -73,59 +80,25 @@ export function Register() {
                 {error}
               </div>
             )}
+
             <div className="space-y-2">
-              <label htmlFor="fullName" className="block font-medium">
-                Nome Completo
-              </label>
-              <Input
-                id="fullName"
-                type="text"
-                placeholder="Seu nome completo"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                required
-                disabled={loading}
-              />
+              <label htmlFor="fullName" className="block font-medium">Nome Completo</label>
+              <Input id="fullName" type="text" placeholder="Seu nome completo" value={fullName} onChange={(e) => setFullName(e.target.value)} required disabled={loading} />
             </div>
 
             <div className="space-y-2">
               <label htmlFor="email" className="block font-medium">E-mail</label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="seu@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                disabled={loading}
-              />
+              <Input id="email" type="email" placeholder="seu@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required disabled={loading} />
             </div>
 
             <div className="space-y-2">
               <label htmlFor="confirmEmail" className="block font-medium">Confirmar E-mail</label>
-              <Input
-                id="confirmEmail"
-                type="email"
-                placeholder="Confirme seu e-mail"
-                value={confirmEmail}
-                onChange={(e) => setConfirmEmail(e.target.value)}
-                required
-                disabled={loading}
-              />
+              <Input id="confirmEmail" type="email" placeholder="Confirme seu e-mail" value={confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)} required disabled={loading} />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="department" className="block font-medium">
-                Departamento
-              </label>
-              <select
-                id="department"
-                className="w-full p-2 border rounded"
-                value={department}
-                onChange={(e) => setDepartment(e.target.value)}
-                required
-                disabled={loading}
-              >
+              <label htmlFor="department" className="block font-medium">Departamento</label>
+              <select id="department" className="w-full p-2 border rounded" value={department} onChange={(e) => setDepartment(e.target.value)} required disabled={loading}>
                 <option value="">Selecione um departamento</option>
                 <option value="Recursos Humanos">Recursos Humanos</option>
                 <option value="Financeiro">Financeiro</option>
@@ -137,36 +110,21 @@ export function Register() {
             </div>
 
             <div className="space-y-2">
+              <label htmlFor="analystToken" className="block font-medium">Token de analista (opcional)</label>
+              <Input id="analystToken" type="text" placeholder="Informe somente se for analista" value={analystToken} onChange={(e) => setAnalystToken(e.target.value)} disabled={loading} />
+            </div>
+
+            <div className="space-y-2">
               <label htmlFor="password" className="block font-medium">Senha</label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="********"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                disabled={loading}
-              />
+              <Input id="password" type="password" placeholder="********" value={password} onChange={(e) => setPassword(e.target.value)} required disabled={loading} />
             </div>
 
             <div className="space-y-2">
               <label htmlFor="confirmPassword" className="block font-medium">Confirmar Senha</label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                placeholder="********"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-                disabled={loading}
-              />
+              <Input id="confirmPassword" type="password" placeholder="********" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required disabled={loading} />
             </div>
 
-            <Button 
-              type="submit" 
-              className="w-full bg-green-500 text-white py-2 rounded"
-              disabled={loading}
-            >
+            <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded" disabled={loading}>
               {loading ? "Cadastrando..." : "Cadastrar"}
             </Button>
           </form>
@@ -175,3 +133,6 @@ export function Register() {
     </div>
   );
 }
+
+export default Register;
+

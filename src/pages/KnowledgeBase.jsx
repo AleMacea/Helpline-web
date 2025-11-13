@@ -52,12 +52,7 @@ export function KnowledgeBase() {
       await articlesAPI.create(formData);
       await loadArticles();
       setIsDialogOpen(false);
-      setFormData({
-        title: "",
-        description: "",
-        category: "",
-        icon: ""
-      });
+      setFormData({ title: "", description: "", category: "", icon: "" });
       setError("");
     } catch (err) {
       setError("Erro ao criar artigo");
@@ -69,7 +64,6 @@ export function KnowledgeBase() {
     if (!window.confirm("Tem certeza que deseja deletar este artigo?")) {
       return;
     }
-
     try {
       await articlesAPI.delete(id);
       await loadArticles();
@@ -129,11 +123,7 @@ export function KnowledgeBase() {
                           <p className="text-gray-600 text-sm mb-2">{article.description}</p>
                           <p className="text-xs text-gray-400">Categoria: {article.category}</p>
                         </div>
-                        <Button
-                          variant="destructive"
-                          size="icon"
-                          onClick={() => handleDeleteArticle(article.id)}
-                        >
+                        <Button variant="destructive" size="icon" onClick={() => handleDeleteArticle(article.id)}>
                           <Trash2 size={16} />
                           <span className="sr-only">Deletar</span>
                         </Button>
@@ -208,3 +198,4 @@ export function KnowledgeBase() {
 }
 
 export default KnowledgeBase;
+

@@ -36,9 +36,7 @@ export function Home() {
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-gray-600">
-                            Visualize e gerencie todos os chamados do sistema.
-                          </p>
+                          <p className="text-gray-600">Visualize e gerencie todos os chamados do sistema.</p>
                         </CardContent>
                       </Card>
                     </Link>
@@ -52,9 +50,7 @@ export function Home() {
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-gray-600">
-                            Crie e gerencie artigos da base de conhecimento.
-                          </p>
+                          <p className="text-gray-600">Crie e gerencie artigos da base de conhecimento.</p>
                         </CardContent>
                       </Card>
                     </Link>
@@ -70,9 +66,7 @@ export function Home() {
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-gray-600">
-                            Converse com nosso assistente virtual para resolver problemas.
-                          </p>
+                          <p className="text-gray-600">Converse com nosso assistente virtual para resolver problemas.</p>
                         </CardContent>
                       </Card>
                     </Link>
@@ -82,13 +76,11 @@ export function Home() {
                         <CardHeader>
                           <CardTitle className="flex items-center gap-2">
                             <BookOpen className="text-green-600" />
-                            Artigos Úteis
+                            Artigos úteis
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-gray-600">
-                            Acesse artigos úteis para resolver problemas comuns.
-                          </p>
+                          <p className="text-gray-600">Acesse artigos úteis para resolver problemas comuns.</p>
                         </CardContent>
                       </Card>
                     </Link>
@@ -102,9 +94,7 @@ export function Home() {
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-gray-600">
-                            Visualize o status dos seus chamados.
-                          </p>
+                          <p className="text-gray-600">Visualize o status dos seus chamados.</p>
                         </CardContent>
                       </Card>
                     </Link>
@@ -119,7 +109,5 @@ export function Home() {
   );
 }
 
-
-
-
+export default Home;
 

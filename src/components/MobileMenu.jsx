@@ -17,16 +17,16 @@ export const MobileMenu = ({ isManager = false }) => {
   };
 
   const managerItems = [
-    { name: "Início", icon: <Home size={20} />, path: "/home" },
-    { name: "Base de Conhecimento", icon: <BookOpen size={20} />, path: "/knowledge-base" },
-    { name: "Lista de Chamados", icon: <Ticket size={20} />, path: "/tickets" },
+    { name: 'Início', icon: <Home size={20} />, path: '/home' },
+    { name: 'Base de Conhecimento', icon: <BookOpen size={20} />, path: '/knowledge-base' },
+    { name: 'Lista de Chamados', icon: <Ticket size={20} />, path: '/tickets' },
   ];
 
   const userItems = [
-    { name: "Início", icon: <Home size={20} />, path: "/home" },
-    { name: "Chat", icon: <MessageSquare size={20} />, path: "/chat" },
-    { name: "Artigos Úteis", icon: <FileText size={20} />, path: "/artigos" },
-    { name: "Meus Chamados", icon: <Ticket size={20} />, path: "/tickets" },
+    { name: 'Início', icon: <Home size={20} />, path: '/home' },
+    { name: 'Chat', icon: <MessageSquare size={20} />, path: '/chat' },
+    { name: 'Artigos úteis', icon: <FileText size={20} />, path: '/artigos' },
+    { name: 'Meus Chamados', icon: <Ticket size={20} />, path: '/tickets' },
   ];
 
   const items = isManager ? managerItems : userItems;
@@ -47,11 +47,11 @@ export const MobileMenu = ({ isManager = false }) => {
 
       {/* Menu móvel overlay */}
       {isOpen && (
-        <div 
+        <div
           className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
           onClick={() => setIsOpen(false)}
         >
-          <div 
+          <div
             className="w-64 h-full bg-[rgba(33,0,93,255)] text-white shadow-lg flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
@@ -77,13 +77,10 @@ export const MobileMenu = ({ isManager = false }) => {
                     key={item.name}
                     to={item.path}
                     onClick={() => {
-                      // Pequeno delay para melhorar UX
                       setTimeout(() => setIsOpen(false), 100);
                     }}
                     className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                      isActive
-                        ? 'bg-blue-700 text-white'
-                        : 'text-white hover:bg-blue-800'
+                      isActive ? 'bg-blue-700 text-white' : 'text-white hover:bg-blue-800'
                     }`}
                   >
                     {item.icon}
@@ -110,4 +107,6 @@ export const MobileMenu = ({ isManager = false }) => {
     </>
   );
 };
+
+export default MobileMenu;
 

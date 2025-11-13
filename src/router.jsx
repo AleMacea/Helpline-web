@@ -7,6 +7,9 @@ import { Register } from './pages/Register';
 import TicketList from './pages/TicketList';
 import UserHelp from './pages/UserHelp';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import AdminUsers from './pages/admin/Users';
+import AdminTickets from './pages/admin/Tickets';
+import AdminReports from './pages/admin/Reports';
 
 export const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -40,6 +43,30 @@ export const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <TicketList />
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: "/admin/users",
+    element: (
+      <ProtectedRoute requireManager={true}>
+        <AdminUsers />
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: "/admin/tickets",
+    element: (
+      <ProtectedRoute requireManager={true}>
+        <AdminTickets />
+      </ProtectedRoute>
+    )
+  },
+  {
+    path: "/admin/reports",
+    element: (
+      <ProtectedRoute requireManager={true}>
+        <AdminReports />
       </ProtectedRoute>
     )
   },

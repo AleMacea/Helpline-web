@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/context/AuthContext";
@@ -34,10 +33,11 @@ export function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-      <Card className="w-full max-w-md shadow-lg rounded-2xl">
+    <div className="min-h-screen bg-gradient-to-b from-[#2B0A6B] to-[#1B084A] flex justify-center items-start p-4">
+      <Card className="w-full max-w-md shadow-lg rounded-2xl mt-10 md:mt-20">
         <CardHeader>
-          <CardTitle className="text-2xl text-center">Login</CardTitle>
+          <img src="/images/logo.png" alt="HelpLine" className="mx-auto h-16 w-auto mb-2" />
+          <CardTitle className="text-2xl text-center">Acesse HelpLine</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -72,7 +72,7 @@ export function Login() {
             </div>
             <Button 
               type="submit" 
-              className="w-full bg-blue-500 text-white py-2 rounded"
+              className="w-full bg-primary text-primary-foreground py-2 rounded"
               disabled={loading}
             >
               {loading ? "Entrando..." : "Entrar"}
@@ -89,3 +89,5 @@ export function Login() {
     </div>
   );
 }
+
+export default Login;
