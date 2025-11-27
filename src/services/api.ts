@@ -1,4 +1,11 @@
 export const API_BASE = import.meta.env.VITE_API_BASE as string;
+const NORMALIZED_BASE = (API_BASE || '').replace(/\/+$/, '');
+
+const withBase = (path = '') => {
+  if (!NORMALIZED_BASE) return path;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${NORMALIZED_BASE}${normalizedPath}`;
+};
 
 const buildHeaders = (extra: Record<string, string> = {}) => {
   const token = localStorage.getItem('token');
@@ -44,7 +51,7 @@ const withQuery = (url: string, params?: Record<string, unknown>) => {
 const http = {
   get: async <T = any>(path: string, params?: Record<string, unknown>): Promise<T> => {
     try {
-      const res = await fetch(withQuery(`${API_BASE}${path}`, params), {
+      const res = await fetch(withQuery(withBase(path), params), {
         method: 'GET',
         headers: buildHeaders(),
       });
@@ -61,7 +68,7 @@ const http = {
   },
   post: async <T = any>(path: string, body?: unknown): Promise<T> => {
     try {
-      const res = await fetch(`${API_BASE}${path}`, {
+      const res = await fetch(withBase(path), {
         method: 'POST',
         headers: buildHeaders(),
         body: body ? JSON.stringify(body) : undefined,
@@ -79,7 +86,7 @@ const http = {
   },
   patch: async <T = any>(path: string, body?: unknown): Promise<T> => {
     try {
-      const res = await fetch(`${API_BASE}${path}`, {
+      const res = await fetch(withBase(path), {
         method: 'PATCH',
         headers: buildHeaders(),
         body: body ? JSON.stringify(body) : undefined,
@@ -97,7 +104,7 @@ const http = {
   },
   put: async <T = any>(path: string, body?: unknown): Promise<T> => {
     try {
-      const res = await fetch(`${API_BASE}${path}`, {
+      const res = await fetch(withBase(path), {
         method: 'PUT',
         headers: buildHeaders(),
         body: body ? JSON.stringify(body) : undefined,
@@ -115,7 +122,7 @@ const http = {
   },
   delete: async <T = any>(path: string): Promise<T> => {
     try {
-      const res = await fetch(`${API_BASE}${path}`, {
+      const res = await fetch(withBase(path), {
         method: 'DELETE',
         headers: buildHeaders(),
       });
@@ -146,12 +153,22 @@ export const ticketsAPI = {
   delete: (id: string | number) => http.delete(`/tickets/${id}`),
 };
 
+export const ticketMessagesAPI = {
+  add: (ticketId: string | number, messageData: Record<string, unknown>) => http.post(`/tickets/${ticketId}/messages`, messageData),
+};
+
 export const articlesAPI = {
   getAll: (params?: Record<string, unknown>) => http.get('/articles', params),
   create: (articleData: Record<string, unknown>) => http.post('/articles', articleData),
   update: (id: string | number, articleData: Record<string, unknown>) => http.put(`/articles/${id}`, articleData),
   delete: (id: string | number) => http.delete(`/articles/${id}`),
   addFeedback: (id: string | number, type: string) => http.post(`/articles/${id}/feedback`, { type }),
+};
+
+export const faqAPI = {
+  getAll: () => http.get('/faq'),
+  getPopular: () => http.get('/faq/popular'),
+  addFeedback: (id: string | number, payload: Record<string, unknown>) => http.post(`/faq/${id}/feedback`, payload),
 };
 
 export const usersAPI = {
@@ -168,7 +185,9 @@ export default {
   API_BASE,
   authAPI,
   ticketsAPI,
+  ticketMessagesAPI,
   articlesAPI,
+  faqAPI,
   usersAPI,
   aiAPI,
 };

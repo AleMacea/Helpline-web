@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -20,7 +20,7 @@ export function TicketList() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [managers, setManagers] = useState([]);
-  const { isManager } = useAuth();
+  const { canManage } = useAuth();
 
   // Form states
   const [formData, setFormData] = useState({
@@ -34,19 +34,36 @@ export function TicketList() {
 
   useEffect(() => {
     loadTickets();
-    if (isManager) {
+    if (canManage) {
       loadManagers();
     }
-  }, [isManager]);
+  }, [canManage]);
+
+  const normalizeTickets = (payload) => {
+    if (Array.isArray(payload)) return payload;
+    if (payload?.tickets && Array.isArray(payload.tickets)) return payload.tickets;
+    if (payload?.data && Array.isArray(payload.data)) return payload.data;
+    if (payload?.results && Array.isArray(payload.results)) return payload.results;
+    if (payload?.items && Array.isArray(payload.items)) return payload.items;
+    return [];
+  };
 
   const loadTickets = async () => {
     try {
       setLoading(true);
       const data = await ticketsAPI.getAll();
-      setTickets(data);
+      let parsed = normalizeTickets(data);
+      if (!Array.isArray(data) && parsed.length === 0) {
+        console.warn("Formato inesperado para lista de tickets:", data);
+      }
+      if (canManage) {
+        parsed = parsed.filter((ticket) => ticket.status !== 'closed');
+      }
+      setTickets(parsed);
     } catch (err) {
       setError("Erro ao carregar tickets");
       console.error(err);
+      setTickets([]);
     } finally {
       setLoading(false);
     }
@@ -146,8 +163,8 @@ export function TicketList() {
   if (loading) {
     return (
       <div className="flex min-h-screen flex-col md:flex-row">
-        <MobileMenu isManager={isManager} />
-        {isManager ? <Sidebar /> : <UserSidebar />}
+        <MobileMenu />
+        {canManage ? <Sidebar /> : <UserSidebar />}
         <div className="flex-1 flex flex-col bg-gray-50 min-h-screen">
           <TopBar />
           <div className="flex-1 flex items-center justify-center p-6">
@@ -160,14 +177,16 @@ export function TicketList() {
 
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
-      <MobileMenu isManager={isManager} />
-      {isManager ? <Sidebar /> : <UserSidebar />}
+      <MobileMenu />
+      {canManage ? <Sidebar /> : <UserSidebar />}
       <div className="flex-1 flex flex-col bg-gray-50 min-h-screen">
         <TopBar />
         <div className="flex-1 p-4 md:p-6">
           <div className="bg-white border border-[#D9D9D9] rounded-lg shadow-sm">
             <div className="bg-[#D9D9D9] text-slate-900 px-4 md:px-6 py-3 rounded-t-lg">
-              <h1 className="text-2xl md:text-3xl font-bold">Lista de Chamados</h1>
+              <h1 className="text-2xl md:text-3xl font-bold">
+                {canManage ? 'Chamados em aberto' : 'Meus Chamados'}
+              </h1>
             </div>
             <div className="p-4 md:p-6 space-y-4">
               {error && (
@@ -213,13 +232,13 @@ export function TicketList() {
                           <p className="text-gray-500">Data</p>
                           <p>{new Date(ticket.createdAt).toLocaleDateString('pt-BR')}</p>
                         </div>
-                        {isManager && (
+                        {canManage && (
                           <div>
                             <p className="text-gray-500">Solicitante</p>
                             <p>{ticket.requester?.name || 'N/A'}</p>
                           </div>
                         )}
-                        {isManager && (
+                        {canManage && (
                           <div>
                             <p className="text-gray-500">Responsável</p>
                             <p>{ticket.assignee?.name || 'Não atribuído'}</p>
@@ -232,7 +251,7 @@ export function TicketList() {
                           <Eye size={16} />
                           <span className="sr-only">Ver</span>
                         </Button>
-                        {isManager && (
+                        {canManage && (
                           <Button variant="outline" size="sm" onClick={() => handleEditTicket(ticket)} className="flex-1 flex items-center justify-center gap-2 text-xs">
                             <Pencil size={16} />
                             <span className="sr-only">Editar</span>
@@ -252,7 +271,7 @@ export function TicketList() {
                         <th className="p-2 text-left text-xs md:text-sm">Protocolo</th>
                         <th className="p-2 text-left text-xs md:text-sm">Data</th>
                         <th className="p-2 text-left text-xs md:text-sm">Título</th>
-                        {isManager && (
+                        {canManage && (
                           <>
                             <th className="p-2 text-left text-xs md:text-sm">Solicitante</th>
                             <th className="p-2 text-left text-xs md:text-sm">Responsável</th>
@@ -267,7 +286,7 @@ export function TicketList() {
                     <tbody>
                       {tickets.length === 0 ? (
                         <tr>
-                          <td colSpan={isManager ? 8 : 6} className="p-4 text-center text-gray-500">
+                          <td colSpan={canManage ? 8 : 6} className="p-4 text-center text-gray-500">
                             Nenhum ticket encontrado
                           </td>
                         </tr>
@@ -279,7 +298,7 @@ export function TicketList() {
                               {new Date(ticket.createdAt).toLocaleDateString('pt-BR')}
                             </td>
                             <td className="p-2 text-xs md:text-sm">{ticket.title}</td>
-                            {isManager && (
+                            {canManage && (
                               <>
                                 <td className="p-2 text-xs md:text-sm">{ticket.requester?.name || "N/A"}</td>
                                 <td className="p-2 text-xs md:text-sm">{ticket.assignee?.name || "Não atribuído"}</td>
@@ -307,7 +326,7 @@ export function TicketList() {
                                   <Eye size={16} />
                                   <span className="sr-only">Ver</span>
                                 </Button>
-                                {isManager && (
+                                {canManage && (
                                   <Button 
                                     variant="outline" 
                                     size="sm"
@@ -392,7 +411,7 @@ export function TicketList() {
               </Dialog>
 
               {/* Dialog para editar ticket (apenas gerente) */}
-              {isManager && (
+              {canManage && (
                 <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
                   <DialogContent className="p-0 max-w-3xl overflow-hidden">
                     <div className="bg-white">
@@ -492,3 +511,7 @@ export function TicketList() {
 }
 
 export default TicketList;
+
+
+
+

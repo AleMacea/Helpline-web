@@ -1,5 +1,12 @@
 // Unified API helpers with VITE_API_BASE and auth header
 export const API_BASE = import.meta.env.VITE_API_BASE;
+const NORMALIZED_BASE = (API_BASE || '').replace(/\/+$/, '');
+
+const withBase = (path = '') => {
+  if (!NORMALIZED_BASE) return path;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${NORMALIZED_BASE}${normalizedPath}`;
+};
 
 const buildHeaders = (extra = {}) => {
   const token = localStorage.getItem('token');
@@ -47,7 +54,7 @@ const withQuery = (url, params) => {
 const http = {
   get: async (path, params) => {
     try {
-      const res = await fetch(withQuery(`${API_BASE}${path}`, params), {
+      const res = await fetch(withQuery(withBase(path), params), {
         method: 'GET',
         headers: buildHeaders(),
       });
@@ -64,7 +71,7 @@ const http = {
   },
   post: async (path, body) => {
     try {
-      const res = await fetch(`${API_BASE}${path}`, {
+      const res = await fetch(withBase(path), {
         method: 'POST',
         headers: buildHeaders(),
         body: body ? JSON.stringify(body) : undefined,
@@ -82,7 +89,7 @@ const http = {
   },
   patch: async (path, body) => {
     try {
-      const res = await fetch(`${API_BASE}${path}`, {
+      const res = await fetch(withBase(path), {
         method: 'PATCH',
         headers: buildHeaders(),
         body: body ? JSON.stringify(body) : undefined,
@@ -100,7 +107,7 @@ const http = {
   },
   put: async (path, body) => {
     try {
-      const res = await fetch(`${API_BASE}${path}`, {
+      const res = await fetch(withBase(path), {
         method: 'PUT',
         headers: buildHeaders(),
         body: body ? JSON.stringify(body) : undefined,
@@ -118,7 +125,7 @@ const http = {
   },
   delete: async (path) => {
     try {
-      const res = await fetch(`${API_BASE}${path}`, {
+      const res = await fetch(withBase(path), {
         method: 'DELETE',
         headers: buildHeaders(),
       });
@@ -151,6 +158,10 @@ export const ticketsAPI = {
   delete: (id) => http.delete(`/tickets/${id}`),
 };
 
+export const ticketMessagesAPI = {
+  add: (ticketId, messageData) => http.post(`/tickets/${ticketId}/messages`, messageData),
+};
+
 // Articles API
 export const articlesAPI = {
   getAll: (params) => http.get('/articles', params),
@@ -158,6 +169,12 @@ export const articlesAPI = {
   update: (id, articleData) => http.put(`/articles/${id}`, articleData),
   delete: (id) => http.delete(`/articles/${id}`),
   addFeedback: (id, type) => http.post(`/articles/${id}/feedback`, { type }),
+};
+
+export const faqAPI = {
+  getAll: () => http.get('/faq'),
+  getPopular: () => http.get('/faq/popular'),
+  addFeedback: (id, payload) => http.post(`/faq/${id}/feedback`, payload),
 };
 
 // Users API

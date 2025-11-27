@@ -16,7 +16,7 @@ export function KnowledgeBase() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const { isManager } = useAuth();
+  const { canManage } = useAuth();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -76,7 +76,7 @@ export function KnowledgeBase() {
   if (loading) {
     return (
       <div className="flex min-h-screen flex-col md:flex-row">
-        <MobileMenu isManager={isManager} />
+        <MobileMenu />
         <Sidebar />
         <div className="flex-1 flex flex-col bg-gray-50 min-h-screen">
           <TopBar />
@@ -90,7 +90,7 @@ export function KnowledgeBase() {
 
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
-      <MobileMenu isManager={isManager} />
+      <MobileMenu />
       <Sidebar />
       <div className="flex-1 flex flex-col bg-gray-50 min-h-screen">
         <TopBar />
@@ -198,4 +198,3 @@ export function KnowledgeBase() {
 }
 
 export default KnowledgeBase;
-

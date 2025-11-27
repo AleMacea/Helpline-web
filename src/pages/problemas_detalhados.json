@@ -6,46 +6,46 @@
         "descricao": "Computador não liga",
         "etapas": [
           {
-            "instrucoes": "Para verificar se o cabo de energia está conectado, siga estes passos:\n1) Certifique-se de que o cabo está firmemente encaixado tanto no computador quanto na tomada;\n2) Verifique se o cabo apresenta sinais de desgaste ou cortes;\n3) Tente conectar em outra tomada.",
-            "pergunta": "Após seguir os passos acima, o cabo de energia está funcionando corretamente?",
+            "instrucoes": "Verifique o cabo de energia:\n1) Confirme se o cabo está firme no PC e na tomada;\n2) Veja se há desgaste ou rompimento;\n3) Teste em outra tomada que você saiba que funciona.",
+            "pergunta": "Depois desses passos, o cabo de energia está funcionando corretamente?",
             "resposta_sim": "Ótimo! Vamos para a próxima etapa.",
-            "resposta_nao": "Por favor, verifique novamente ou substitua o cabo e tente novamente."
+            "resposta_nao": "Troque o cabo ou reconecte com calma e tente novamente."
           },
           {
-            "instrucoes": "Para testar outra tomada, siga estes passos:\n1) Conecte o cabo de energia em uma tomada que esteja funcionando;\n2) Verifique se o dispositivo liga.",
-            "pergunta": "Após seguir os passos acima, o teste em outra tomada foi bem sucedido?",
+            "instrucoes": "Teste em outra tomada:\n1) Conecte o cabo em outro ponto de energia;\n2) Verifique se o computador liga.",
+            "pergunta": "O teste em outra tomada funcionou?",
             "resposta_sim": "Ótimo! Vamos para a próxima etapa.",
-            "resposta_nao": "Por favor, verifique cuidadosamente ou teste em uma outra tomada."
+            "resposta_nao": "Tente mais um ponto de energia ou continue para a próxima verificação."
           },
           {
-            "instrucoes": "Para verificar sinais de atividade, siga estes passos:\n1) Observe se há alguma luz indicadora no gabinete;\n2) Escute se há sons de inicialização ou funcionamento dos ventiladores;\n3) Verifique se há movimento nas ventoinhas.",
-            "pergunta": "Após seguir os passos acima, você percebe algum sinal de vida?",
-            "resposta_sim": "Ótimo! Vamos para a próxima etapa.",
-            "resposta_nao": "Por favor, revise as conexões e tente novamente."
+            "instrucoes": "Procure sinais de atividade:\n1) Veja se existe alguma luz acesa no gabinete;\n2) Escute se há som dos ventiladores ou do disco;\n3) Observe se as ventoinhas estão girando.",
+            "pergunta": "Você percebe algum sinal de vida após ligar?",
+            "resposta_sim": "Perfeito, vamos seguir.",
+            "resposta_nao": "Revise as conexões de energia e periféricos e tente outra vez."
           },
           {
-            "instrucoes": "Para testar outro cabo de energia, siga estes passos:\n1) Utilize um cabo conhecido por estar em funcionamento;\n2) Conecte-o ao equipamento e à tomada;\n3) Observe se o computador liga.",
-            "pergunta": "Após seguir os passos acima, o teste com outro cabo de energia foi bem sucedido?",
-            "resposta_sim": "Ótimo! Vamos para a próxima etapa.",
-            "resposta_nao": "Experimente novamente com um cabo confiável e tente novamente."
+            "instrucoes": "Teste outro cabo de energia:\n1) Use um cabo que você saiba que funciona;\n2) Conecte no equipamento e na tomada;\n3) Tente ligar o computador.",
+            "pergunta": "Com outro cabo, o computador ligou?",
+            "resposta_sim": "Ótimo! Continue para garantir estabilidade.",
+            "resposta_nao": "Use um cabo confiável diferente ou siga para a próxima etapa."
           },
           {
-            "instrucoes": "Para verificar se o botão de energia está funcionando, siga estes passos:\n1) Pressione o botão com firmeza e observe se há algum clique ou resposta visual (como uma luz);\n2) Certifique-se de que não há sujeira ou obstruções que possam interferir;\n3) Se possível, compare com o funcionamento do botão em outro equipamento similar.",
-            "pergunta": "Após seguir os passos acima, o botão de energia está funcionando corretamente?",
-            "resposta_sim": "Ótimo! Vamos para a próxima etapa.",
-            "resposta_nao": "Por favor, limpe ou repare o botão e tente novamente."
+            "instrucoes": "Cheque o botão de energia:\n1) Pressione com firmeza e veja se há clique ou luz;\n2) Verifique se não há sujeira ou travamento;\n3) Compare o toque com outro equipamento parecido, se possível.",
+            "pergunta": "O botão de energia parece estar funcionando?",
+            "resposta_sim": "Ótimo! Vamos para a próxima verificação.",
+            "resposta_nao": "Limpe ou acione o suporte para reparar o botão."
           },
           {
-            "instrucoes": "Para verificar a fonte de alimentação, siga estes passos:\n1) Certifique-se de que a fonte está ligada e o interruptor (se houver) está na posição correta;\n2) Verifique se há odores de queimado ou ruídos incomuns;\n3) Se possível, teste utilizando outra fonte compatível.",
-            "pergunta": "Após seguir os passos acima, a fonte de alimentação está operando corretamente?",
-            "resposta_sim": "Ótimo! Vamos para a próxima etapa.",
-            "resposta_nao": "Por favor, substitua ou repare a fonte de alimentação e tente novamente."
+            "instrucoes": "Avalie a fonte de alimentação:\n1) Confirme se o interruptor (se houver) está ligado;\n2) Note cheiros de queimado ou ruídos estranhos;\n3) Se puder, teste com outra fonte compatível.",
+            "pergunta": "A fonte aparenta estar operando normalmente?",
+            "resposta_sim": "Tudo certo aqui. Vamos encerrar.",
+            "resposta_nao": "Substitua ou mande revisar a fonte antes de tentar novamente."
           },
           {
-            "instrucoes": "Caso todas as etapas anteriores não solucionem o problema, é recomendado buscar suporte técnico especializado.",
+            "instrucoes": "Se nada funcionou até aqui, recomendamos acionar o suporte técnico para uma análise detalhada.",
             "pergunta": "Deseja abrir um chamado para suporte?",
-            "resposta_sim": "Por favor, abra um chamado.",
-            "resposta_nao": "Entendido. Caso precise de ajuda futuramente, não hesite em contatar o suporte."
+            "resposta_sim": "Por favor, abra o chamado e informe os testes realizados.",
+            "resposta_nao": "Entendido. Se precisar, estamos à disposição."
           }
         ]
       }
@@ -58,40 +58,40 @@
         "descricao": "Sem acesso à internet via Wi-Fi",
         "etapas": [
           {
-            "instrucoes": "Verifique se o Wi-Fi está ativado:\n1) Confira se o botão físico ou atalho de teclado de Wi-Fi está ligado;\n2) No Windows, clique no ícone de rede e veja se o Wi-Fi está habilitado.",
+            "instrucoes": "Confirme se o Wi-Fi está ativado:\n1) Verifique o botão físico/atalho de Wi-Fi no notebook;\n2) No Windows, clique no ícone de rede e confirme se o Wi-Fi está ligado.",
             "pergunta": "O Wi-Fi está ativado corretamente?",
             "resposta_sim": "Ótimo! Vamos para a próxima etapa.",
             "resposta_nao": "Ative o Wi-Fi e tente novamente."
           },
           {
-            "instrucoes": "Verifique se há redes disponíveis:\n1) Clique no ícone de rede;\n2) Veja se sua rede aparece na lista;\n3) Tente se conectar.",
-            "pergunta": "Você conseguiu visualizar e tentar se conectar à rede?",
-            "resposta_sim": "Ótimo! Vamos para a próxima etapa.",
-            "resposta_nao": "Verifique se o roteador está ligado e dentro do alcance."
+            "instrucoes": "Busque redes disponíveis:\n1) Clique no ícone de rede;\n2) Confira se sua rede aparece na lista;\n3) Tente conectar.",
+            "pergunta": "Você conseguiu visualizar e tentar conectar na rede?",
+            "resposta_sim": "Perfeito! Seguimos.",
+            "resposta_nao": "Verifique se o roteador está ligado e próximo."
           },
           {
-            "instrucoes": "Reinicie os equipamentos:\n1) Reinicie o roteador;\n2) Reinicie o computador;\n3) Tente conectar-se novamente.",
-            "pergunta": "A conexão foi restabelecida após reiniciar os equipamentos?",
+            "instrucoes": "Reinicie os equipamentos:\n1) Reinicie o roteador/modem;\n2) Reinicie o computador;\n3) Tente conectar novamente.",
+            "pergunta": "A conexão voltou após reiniciar?",
             "resposta_sim": "Ótimo! Conexão restaurada.",
             "resposta_nao": "Vamos tentar outra verificação."
           },
           {
-            "instrucoes": "Esqueça e reconecte-se à rede Wi-Fi:\n1) Acesse as configurações de rede;\n2) Remova a rede salva;\n3) Conecte-se novamente digitando a senha correta.",
-            "pergunta": "Você conseguiu se reconectar com sucesso?",
-            "resposta_sim": "Ótimo! Conexão funcionando normalmente.",
-            "resposta_nao": "Verifique a senha da rede ou entre em contato com o suporte."
+            "instrucoes": "Esqueça e reconecte à rede:\n1) Abra as configurações de Wi-Fi;\n2) Remova a rede salva;\n3) Conecte de novo digitando a senha correta.",
+            "pergunta": "Conseguiu se reconectar com sucesso?",
+            "resposta_sim": "Excelente! Conexão normalizada.",
+            "resposta_nao": "Revise a senha ou entre em contato com o suporte."
           },
           {
-            "instrucoes": "Teste a conexão em outro dispositivo:\n1) Tente conectar outro dispositivo à mesma rede Wi-Fi;\n2) Verifique se há internet nesse dispositivo.",
-            "pergunta": "A rede funciona corretamente em outros dispositivos?",
-            "resposta_sim": "O problema pode estar no seu dispositivo. Recomendamos suporte técnico.",
-            "resposta_nao": "O problema está na rede. Verifique o roteador ou entre em contato com o provedor."
+            "instrucoes": "Teste em outro dispositivo:\n1) Conecte outro aparelho na mesma rede;\n2) Veja se há internet nele.",
+            "pergunta": "A rede funciona em outros dispositivos?",
+            "resposta_sim": "O problema é no seu equipamento. Recomendamos suporte técnico.",
+            "resposta_nao": "O problema é na rede. Reinicie o roteador ou acione o provedor."
           },
           {
-            "instrucoes": "Caso as etapas anteriores não resolvam:\n1) Reinstale os drivers de rede;\n2) Faça uma restauração de rede nas configurações do Windows;\n3) Se persistir, contate o suporte.",
-            "pergunta": "Deseja abrir um chamado para suporte técnico?",
-            "resposta_sim": "Por favor, abra um chamado.",
-            "resposta_nao": "Tudo bem. Se precisar de ajuda futuramente, estamos à disposição."
+            "instrucoes": "Se continuar sem internet:\n1) Reinstale os drivers de rede;\n2) Faça uma restauração de rede no Windows;\n3) Se persistir, abra um chamado.",
+            "pergunta": "Deseja abrir um chamado agora?",
+            "resposta_sim": "Por favor, registre o chamado e informe os testes feitos.",
+            "resposta_nao": "Ok. Se precisar, volte a nos procurar."
           }
         ]
       }
@@ -104,34 +104,34 @@
         "descricao": "Sistema operacional travando constantemente",
         "etapas": [
           {
-            "instrucoes": "Verifique atualizações pendentes:\n1) Vá em Configurações > Atualização e Segurança;\n2) Verifique se há atualizações disponíveis;\n3) Instale e reinicie o computador.",
+            "instrucoes": "Verifique atualizações pendentes:\n1) Vá em Configurações > Atualização e Segurança;\n2) Confira se há updates disponíveis;\n3) Instale e reinicie o computador.",
             "pergunta": "O sistema foi atualizado com sucesso?",
             "resposta_sim": "Ótimo! Vamos continuar.",
-            "resposta_nao": "Tente novamente ou utilize outra rede."
+            "resposta_nao": "Tente novamente ou use outra rede para baixar."
           },
           {
-            "instrucoes": "Execute a verificação de arquivos do sistema:\n1) Abra o Prompt de Comando como administrador;\n2) Digite `sfc /scannow` e pressione Enter;\n3) Aguarde a verificação e siga as instruções.",
+            "instrucoes": "Execute a checagem de arquivos do sistema:\n1) Abra o Prompt de Comando como administrador;\n2) Rode `sfc /scannow` e pressione Enter;\n3) Aguarde a verificação e siga as instruções.",
             "pergunta": "A verificação encontrou e corrigiu erros?",
-            "resposta_sim": "Perfeito! Verifique se o sistema está estável.",
-            "resposta_nao": "Vamos tentar outra solução."
+            "resposta_sim": "Perfeito! Avalie se o sistema está estável.",
+            "resposta_nao": "Vamos testar outra solução."
           },
           {
-            "instrucoes": "Desative programas na inicialização:\n1) Pressione Ctrl+Shift+Esc para abrir o Gerenciador de Tarefas;\n2) Vá na aba 'Inicializar';\n3) Desative os programas desnecessários.",
-            "pergunta": "Após desativar os programas, o sistema está mais rápido?",
-            "resposta_sim": "Ótimo! Isso pode melhorar o desempenho.",
-            "resposta_nao": "Vamos verificar mais uma possível causa."
+            "instrucoes": "Reduza programas na inicialização:\n1) Ctrl+Shift+Esc para abrir o Gerenciador de Tarefas;\n2) Aba 'Inicializar';\n3) Desative programas desnecessários.",
+            "pergunta": "Após isso, o sistema ficou mais rápido?",
+            "resposta_sim": "Ótimo! Isso deve melhorar o desempenho.",
+            "resposta_nao": "Vamos verificar outra possível causa."
           },
           {
-            "instrucoes": "Verifique a integridade do disco:\n1) Abra o Prompt de Comando como administrador;\n2) Digite `chkdsk /f` e pressione Enter;\n3) Reinicie o computador, se solicitado.",
+            "instrucoes": "Cheque a integridade do disco:\n1) Prompt de Comando como administrador;\n2) Rode `chkdsk /f` e pressione Enter;\n3) Reinicie o computador quando solicitado.",
             "pergunta": "O disco foi verificado e está saudável?",
-            "resposta_sim": "Excelente. O sistema deve estar mais estável agora.",
-            "resposta_nao": "Considere um backup e a substituição do disco."
+            "resposta_sim": "Excelente. Deve ficar mais estável agora.",
+            "resposta_nao": "Considere backup e avaliar troca do disco."
           },
           {
-            "instrucoes": "Se o problema persistir:\n1) Considere restaurar o sistema a um ponto anterior;\n2) Vá em Configurações > Recuperação > Restaurar este PC.",
+            "instrucoes": "Persistindo o problema:\n1) Restaure o sistema a um ponto anterior;\n2) Acesse Configurações > Recuperação > Restaurar este PC.",
             "pergunta": "Deseja restaurar o sistema agora?",
             "resposta_sim": "Siga com a restauração para corrigir o problema.",
-            "resposta_nao": "Tudo bem, mas recomendamos fortemente realizar esse procedimento."
+            "resposta_nao": "Tudo bem, mas recomendamos fortemente esse procedimento."
           }
         ]
       }
@@ -139,25 +139,27 @@
   },
   {
     "categoria": "Geral",
-    "problemas": [ {
+    "problemas": [
+      {
         "descricao": "Computador reiniciando sozinho",
-        "etapas": [{
-            "instrucoes": "Desative reinicialização automática:\n1) Vá em Sistema > Configurações Avançadas;\n2) Clique em 'Inicialização e Recuperação';\n3) Desmarque 'Reiniciar automaticamente'.",
+        "etapas": [
+          {
+            "instrucoes": "Desative a reinicialização automática:\n1) Vá em Sistema > Configurações avançadas;\n2) Clique em 'Inicialização e Recuperação';\n3) Desmarque 'Reiniciar automaticamente'.",
             "pergunta": "A reinicialização automática foi desativada?",
             "resposta_sim": "Vamos monitorar se o erro reaparece.",
-            "resposta_nao": "Tente novamente ou solicite ajuda para acesso administrativo."
+            "resposta_nao": "Repita os passos ou peça ajuda para acesso administrativo."
           },
           {
-            "instrucoes": "Verifique superaquecimento:\n1) Baixe um software como HWMonitor;\n2) Monitore a temperatura dos componentes;\n3) Limpe fisicamente o computador, se necessário.",
+            "instrucoes": "Verifique superaquecimento:\n1) Use um app como HWMonitor;\n2) Monitore a temperatura dos componentes;\n3) Faça limpeza física se estiver muito quente.",
             "pergunta": "O equipamento está superaquecendo?",
-            "resposta_sim": "Recomenda-se limpeza ou manutenção.",
-            "resposta_nao": "Vamos testar problemas de software."
+            "resposta_sim": "Recomenda-se limpeza ou manutenção técnica.",
+            "resposta_nao": "Vamos checar possíveis causas de software."
           },
           {
-            "instrucoes": "Atualize drivers e BIOS:\n1) Acesse o site do fabricante da placa-mãe;\n2) Verifique atualizações de drivers e BIOS;\n3) Siga as instruções com cuidado.",
+            "instrucoes": "Atualize drivers e BIOS:\n1) Acesse o site da placa-mãe;\n2) Baixe drivers e BIOS recentes;\n3) Siga as instruções com atenção.",
             "pergunta": "O sistema foi atualizado com sucesso?",
-            "resposta_sim": "Ótimo! Verifique se o problema persiste.",
-            "resposta_nao": "Considere procurar um técnico para auxílio."
+            "resposta_sim": "Ótimo! Veja se o problema continua.",
+            "resposta_nao": "Considere buscar um técnico para auxiliar."
           }
         ]
       }
